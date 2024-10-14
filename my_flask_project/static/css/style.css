@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #d4bdde;
+    padding-top: 80px; /* Sesuaikan dengan tinggi header */
+    margin: 0;
+    align-items: center;
+}
+
+/* Main Layout */
+.wrapper {
+    display: flex;
+}
+
+/* Offset untuk konten utama agar tidak tertutup sidebar */
+.main-content {
+    margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+
+.header {
+    background-color: #387478; /* Warna latar belakang header */
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center; /* Menempatkan elemen di tengah secara vertikal */
+    justify-content: space-between; /* Membuat ruang di antara logo dan judul */
+}
+
+.logo-container {
+    flex-shrink: 0; /* Mencegah logo mengecil */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+/* Spasi antar logo */
+}
+
+.logo {
+    height: 70px;
+    width: 110px;
+}
+
+.kemdikbud-logo {
+    max-width: 70px;
+    /* Ukuran lebih kecil untuk logo Kemendikbud */
+    height: auto;
+    position: absolute;
+    right: 20px;
+    /* Tambahkan jarak 20px dari tepi kanan */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Agar logo berada di tengah secara vertikal */
+}
+
+
+.dashboard-title {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin: 0;
+    flex-grow: 1; /* Membuat judul mengisi ruang yang tersisa */
+    text-align: center; /* Menempatkan teks di tengah */
+}
+
+.spacer {
+    flex-shrink: 0; /* Tempat kosong yang memungkinkan judul tetap di tengah */
+    width: 50px; /* Sesuaikan dengan lebar logo */
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Mengatur tampilan card agar berada lebih ke tengah */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ubah menjadi 'center' untuk menempatkan card di tengah */
+    gap: 30px; /* Jarak antar card */
+    margin-top: 20px;
+    padding: 20px; /* Padding tambahan untuk jarak dari tepi */
+    max-width: 1200px; /* Batasi lebar maksimal agar tidak terlalu melebar di layar besar */
+    margin-left: auto;
+    margin-right: auto; /* Menempatkan kontainer di tengah */
+}
+
+/* Mengatur tampilan chart agar berada lebih ke tengah */
+.kontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Mengatur chart agar berada di tengah */
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 1200px; /* Batasi lebar maksimal agar tidak terlalu melebar */
+    margin-left: auto;
+    margin-right: auto; /* Menempatkan kontainer di tengah */
+}
+
+.card-link {
+    text-decoration: none;
+    flex: 1 1 calc(33.33% - 40px);
+    min-width: 250px;
+    max-width: 350px;
+    margin: 10px;
+}
+
+
+
+.chart {
+    padding: 20px;
+    border: 1px solid #f49131;
+    border-radius: 10px;
+    background: #251c35;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    flex: 1 1 45%;
+    max-width: 500px;
+    min-width: 300px;
+}
+
+
+.card1, .card2, .card3 {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card1 {
+    background-color: #4CAF50;
+}
+
+.card2 {
+    background-color: orange;
+}
+
+.card3 {
+    background-color: #FF3030;
+}
+
+.card1:hover, .card2:hover, .card3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Media query untuk tablet */
+@media (max-width: 1024px) {
+    .container {
+        gap: 15px;
+    }
+}
+
+/* Media query untuk ponsel umum */
+@media (max-width: 800px) {
+    .dashboard-title {
+        font-size: 1.5em;
+    }
+
+    .card-link {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .profile-icon {
+        font-size: 30px;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Media query untuk layar sangat kecil */
+@media (max-width: 480px) {
+    .dashboard-title {
+        font-size: 1.2em;
+    }
+
+    .card1, .card2, .card3 {
+        padding: 15px;
+    }
+
+    .profile-icon {
+        font-size: 25px;
+    }
+}
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Menghilangkan margin saat sidebar bersembunyi di layar kecil */
+    }
+}
+
+
+
+/* Tambahkan margin yang sesuai pada card dan chart untuk layar besar */
+@media (min-width: 1024px) {
+    .container, .kontainer {
+        padding-left: 50px; /* Geser sedikit ke kanan */
+        padding-right: 50px; /* Seimbangkan dengan kiri */
+    }
+}
+
+    .card-link {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .chart {
+        max-width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+    }

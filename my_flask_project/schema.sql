@@ -1,0 +1,9 @@
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    major TEXT NOT NULL,
+    class INTEGER NOT NULL,
+    school TEXT NOT NULL
+);
+
+

@@ -1,0 +1,79 @@
+/* Sidebar Styles */
+.sidebar {
+    width: 250px; /* Lebar tetap */
+    background-color: #243642;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: 1.3s;
+    z-index: 1;
+    padding-top: 58px; /* Sesuaikan dengan tinggi header */
+}
+
+/* Sidebar logo styling */
+.sidebar-header {
+    display: flex;
+    justify-content: center; /* Menempatkan logo di tengah */
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* Garis pemisah antara header dan menu */
+}
+
+.sidebar-logo {
+    max-width: 100px; /* Sesuaikan ukuran logo */
+    height: auto;
+    margin-bottom: 10px; /* Jarak antara logo dan menu */
+}
+
+/* Sidebar menu styling */
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 15px 0; /* Jarak antar item menu */
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.sidebar-menu a i {
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Efek hover pada menu */
+    border-radius: 10px;
+}
+
+.hamburger {
+    display: none;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Sidebar mengambil lebar penuh di layar kecil */
+        height: auto;
+        display: none;
+        position: relative;
+    }
+
+    .sidebar-active {
+        display: block; /* Tampilkan sidebar saat aktif di layar kecil */
+    }
+
+    .hamburger {
+        display: block;
+    }
+}

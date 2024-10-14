@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chart.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Dashboard Siswa PKL</title>
+</head>
+
+<body>
+
+       <!-- Main Content -->
+            <div class="main-content">
+                <div class="header">
+                    <div class="logo-container">
+                        <img src="{{ url_for('static', filename='img/logo1.png') }}" alt="Logo" class="logo">
+                        <img src="{{ url_for('static', filename='img/logokemdikbud.png') }}" alt="Logo Kemendikbud" class="logo kemdikbud-logo">
+                    </div>
+                    <h1 class="dashboard-title">Dashboard Siswa PKL di Departemen TI</h1>
+                    <div class="spacer"></div>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="{{ url_for('absensi') }}"><i class="fas fa-clipboard-list"></i> Absensi</a></li>
+                <li><a href="{{ url_for('daftar_absen') }}"><i class="fas fa-calendar-check"></i> Daftar Hadir</a></li>
+                <li><a href=""><i class="fas fa-user"></i> Profil</a></li>
+                <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href=""><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+            
+
+        <div class="container">
+            <a href="{{ url_for('data_siswa') }}" class="card-link">
+                <div class="card1">
+                    <div class="profile-icon">&#128100;</div>
+                    <h3>Data Siswa</h3><br>
+                    <p>Jumlah : {{ jumlah_siswa }}</p>
+                </div>
+            </a>
+            <a href="" class="card-link">
+                <div class="card2">
+                    <!-- Ganti ikon aktivitas -->
+                    <div class="profile-icon"><i class="fas fa-tasks"></i></div>
+                    <h3>Aktivitas</h3><br>
+                </div>
+            </a>
+            <a href="{{ url_for('projek') }}" class="card-link">
+                <div class="card3">
+                    <div class="profile-icon">&#127891;</div>
+                    <h3>Projek</h3><br>
+                    <p>Jumlah : {{ jumlah_projek }}</p>
+                </div>
+            </a>
+        </div>
+        
+
+            <div class="kontainer">
+                <div class="chart">
+                    <canvas id="barchart" width="300" height="300"></canvas>
+                </div>
+                <div class="chart">
+                    <canvas id="doughnut" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('sidebar-active');
+        });
+    </script>
+    <script src="/static/js/chart1.js"></script>
+    <script src="/static/js/chart2.js"></script>
+</body>
+
+</html>

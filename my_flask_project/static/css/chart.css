@@ -1,0 +1,56 @@
+.kontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chart {
+    padding: 20px;
+    border: 1px solid #f49131;
+    border-radius: 10px;
+    background: #251c35;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    flex: 1 1 45%;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+/* Media query untuk Samsung Galaxy S8+ (1440x2960 px) */
+@media screen and (max-width: 1440px) and (min-height: 2960px) {
+    .chart {
+        max-width: 100%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+}
+
+/* Media query untuk Samsung Galaxy Z Fold 5 (1812x2176 px) */
+@media screen and (max-width: 1812px) and (min-height: 2176px) {
+    .chart {
+        max-width: 100%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+}
+
+/* Media query untuk ponsel umum */
+@media (max-width: 800px) {
+    .kontainer {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .chart {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

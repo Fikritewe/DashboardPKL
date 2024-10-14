@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Absensi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px;
+            color: #495057;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: left;
+            color: #343a40;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-title i {
+            color: #007bff;
+            font-size: 32px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .absensi-table {
+            flex: 3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 12px;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 4px solid #0056b3;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.2s ease;
+        }
+
+        td {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        td:last-child {
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        /* Smooth rounded corners */
+        table tr:first-child th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        table tr:first-child th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .btn-reset {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn-reset:hover {
+            background-color: #c82333;
+            transform: translateY(-3px);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link i {
+            margin-right: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-reset {
+                width: 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-title">
+            <i class="fas fa-clipboard-list"></i>
+            <h2>Daftar Absensi</h2>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="absensi-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in absensi %}
+                        <tr>
+                            <td>{{ entry[0] }}</td> <!-- Nama -->
+                            <td>{{ entry[1] }}</td> <!-- Tanggal -->
+                            <td>{{ entry[2] }}</td> <!-- Jam -->
+                            <td>{{ entry[3] }}</td> <!-- Status -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="actions">
+                <form action="{{ url_for('reset_absensi') }}" method="post">
+                    <button type="submit" class="btn-reset">Reset Daftar Absensi</button>
+                </form>
+
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
